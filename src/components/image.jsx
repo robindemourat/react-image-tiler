@@ -1,47 +1,28 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-const Unset = 2e8
-
-function shouldBreak(i: number, componentWidth: number, width: number, minCols: number) {
-    // If the width of this component surpasses the side of the screen, wrap it
-    // If the width of the component <= the min size, wrap it if i > minCols
-
-    return componentWidth < 300 && i % minCols == 0
-    // console.log(i % minCols)
-    console.log((i + 1) % minCols)
-    // return (i + 1) % minCols == 0
-    // if (i < 1) {
-    //     return false
-    // }
-    // // console.log(i, componentWidth, width, minCols, componentWidth * i > width && i > minCols)
-    // return componentWidth * i > width && i > minCols && !shouldBreak(i - 1, componentWidth, width, minCols)
-}
-
-class ProportionalImage extends React.Component {
+export default class SquareImage extends React.Component {
     constructor(props) {
         super(props)
 
         this.state = {
-            height: Unset
+            height: 0,
+            width: 0,
+            backgroundImage: `url(${props.backgroundImage})`
         }
     }
 
     render() {
         return <div
             ref={(r) => this.node = r}
-            style={ this.state }>Hiee</div>
+            style={ this.state }></div>
     }
 
     resize() {
-        return (event) => this.setState({
-            height: window.innerWidth / this.props.minCols,
-            width: window.innerWidth / this.props.minCols
+        return (event) => this.modifyState({
+            height: window.innerWidth / Math.floor(window.innerWidth / this.props.minWidth),
+            width: window.innerWidth / Math.floor(window.innerWidth / this.props.minWidth)
         })
-    }
-
-    componentWillMount() {
-
     }
 
     componentDidMount() {
@@ -52,8 +33,12 @@ class ProportionalImage extends React.Component {
     componentWillUnmount() {
         window.removeEventLisener('resize', this.resize())
     }
+
+    modifyState(newState) {
+        this.setState(Object.assign({}, this.state, newState))
+    }
 }
 
-ProportionalImage.defaultProps = { minCols: 3, index: 1, minWidth: 300, maxWidth: 400 }
-
-export default ProportionalImage
+SquareImage.defaultProps = {
+    minWidth: 200
+}

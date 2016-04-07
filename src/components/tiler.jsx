@@ -1,18 +1,28 @@
-require('./tiler.less')
+require('./tiler.css')
 
 import React from 'react'
 import ReactDOM from 'react-dom'
 import Dimensions from 'react-dimensions'
-import ProportionalImage from './image.jsx'
+import SquareImage from './image.jsx'
 
 class Tiler extends React.Component {
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            images: props.images,
+        }
+    }
+
     render() {
-        const items = [1,2,3,4,5,7,8,9,10].map((n, i) => {
-            return <ProportionalImage parentWidth={this.node ? this.node.clientWidth : undefined} key={n} index={n} />
+        const items = this.props.images.map((n, i) => {
+            return <SquareImage backgroundImage={n} minWidth={this.props.minWidth} key={i} />
         })
 
-        return <div className="image-container" ref={(r) => this.node = r}>{ items }</div>
+        return <div className="tiler-image-container">{ items }</div>
     }
 }
+
+Tiler.defaultProps = { images: [], minWidth: 200 }
 
 export default Tiler
