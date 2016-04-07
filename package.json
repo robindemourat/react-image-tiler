@@ -1,6 +1,6 @@
 {
   "name": "react-image-tiler",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Responsive image tiling component for React",
   "main": "src/tiler.js",
   "scripts": {
@@ -13,6 +13,10 @@
     "responsive",
     "tiles"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mike-douglas/react-image-tiler.git"
+  },
   "author": "Mike Douglas <hello@directive.io>",
   "license": "MIT",
   "devDependencies": {

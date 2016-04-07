@@ -1,8 +1,9 @@
 .tiler-image-container {
     padding: 0;
     margin: 0;
-
+    clear: both;
 }
+
 .tiler-image-container > div {
     display: inline-block;
     float: left;

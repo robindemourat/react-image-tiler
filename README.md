@@ -38,9 +38,7 @@ ReactDOM.render(<Tiler images={images} minWidth="200" />)
 
 See `example/index.html`.
 
-## Other stuff
-
-This also includes a very simple `InstagramFeed` class that makes it easy to pull a public feed of images from someone's Instagram account. It's used in the `example/index.jsx` example, and also on [my website](http://directive.io)
+The example also includes a very simple `InstagramFeed` class that makes it easy to pull a public feed of images from someone's Instagram account. It's used in the `example/index.jsx` example, and also on [my website](http://directive.io)
 
 ## Development
 
