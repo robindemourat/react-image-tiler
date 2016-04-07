@@ -47,3 +47,5 @@ This also includes a very simple `InstagramFeed` class that makes it easy to pul
 ```bash
 $ webpack-dev-server --content-base example/
 ```
+
+[react]: https://facebook.github.io/react/
