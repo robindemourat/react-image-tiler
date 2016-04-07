@@ -1,6 +1,6 @@
 {
   "name": "react-image-tiler",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Responsive image tiling component for React",
   "main": "src/tiler.js",
   "scripts": {
