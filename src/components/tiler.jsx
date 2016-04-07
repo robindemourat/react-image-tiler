@@ -2,7 +2,6 @@ require('./tiler.css')
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Dimensions from 'react-dimensions'
 import SquareImage from './image.jsx'
 
 class Tiler extends React.Component {
@@ -10,7 +9,7 @@ class Tiler extends React.Component {
         super(props)
 
         this.state = {
-            images: props.images,
+            images: props.images
         }
     }
 
