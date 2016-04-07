@@ -1,7 +1,6 @@
 .tiler-image-container {
     padding: 0;
     margin: 0;
-    clear: both;
 }
 
 .tiler-image-container > div {
@@ -10,4 +9,10 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+}
+
+.tiler-image-container > div.end {
+    clear: both;
+    float: none;
+    display: block;
 }

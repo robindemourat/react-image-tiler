@@ -18,7 +18,7 @@ class Tiler extends React.Component {
             return <SquareImage backgroundImage={n} minWidth={this.props.minWidth} key={i} />
         })
 
-        return <div className="tiler-image-container">{ items }</div>
+        return <div className="tiler-image-container">{ items }<div className="end"></div></div>
     }
 }
 
