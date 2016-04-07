@@ -18,7 +18,7 @@
   "devDependencies": {
     "webpack": "^1.12.14",
     "webpack-dev-server": "^1.14.1",
-    "fetch-jsonp": "^1.0.0",
+    "fetch-jsonp": "^1.0.0"
   },
   "dependencies": {
     "babel-core": "^6.7.4",
