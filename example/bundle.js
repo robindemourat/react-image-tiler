@@ -46,6 +46,8 @@
 
 	'use strict';
 
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 	var _react = __webpack_require__(1);
 
 	var _react2 = _interopRequireDefault(_react);
@@ -54,13 +56,81 @@
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _tiler = __webpack_require__(159);
+	var _tiler = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"../src/tiler.js\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
 
 	var _tiler2 = _interopRequireDefault(_tiler);
 
+	var _instagram = __webpack_require__(160);
+
+	var _instagram2 = _interopRequireDefault(_instagram);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	_reactDom2.default.render(_react2.default.createElement(_tiler2.default, null), document.getElementById('app'));
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var InstagramApp = function (_React$Component) {
+	    _inherits(InstagramApp, _React$Component);
+
+	    function InstagramApp(props) {
+	        _classCallCheck(this, InstagramApp);
+
+	        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(InstagramApp).call(this, props));
+
+	        _this.state = { images: [] };
+
+	        var YOUR_USER_ID = '',
+	            YOUR_CLIENT_ID = '',
+	            instagram = new _instagram2.default(YOUR_USER_ID, YOUR_CLIENT_ID);
+
+	        instagram.recent().then(function (feed) {
+	            return _this.setState({
+	                images: feed.data.map(function (item) {
+	                    return item.images.standard_resolution.url;
+	                })
+	            });
+	        });
+	        return _this;
+	    }
+
+	    _createClass(InstagramApp, [{
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(_tiler2.default, { images: this.state.images });
+	        }
+	    }]);
+
+	    return InstagramApp;
+	}(_react2.default.Component);
+
+	var PlaceKittenApp = function (_React$Component2) {
+	    _inherits(PlaceKittenApp, _React$Component2);
+
+	    function PlaceKittenApp(props) {
+	        _classCallCheck(this, PlaceKittenApp);
+
+	        var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(PlaceKittenApp).call(this, props));
+
+	        _this2.state = {
+	            images: ['http://placekitten.com/200/300', 'http://placekitten.com/300/300', 'http://placekitten.com/400/300', 'http://placekitten.com/500/300', 'http://placekitten.com/200/200', 'http://placekitten.com/500/500', 'http://placekitten.com/600/400', 'http://placekitten.com/700/300']
+	        };
+	        return _this2;
+	    }
+
+	    _createClass(PlaceKittenApp, [{
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(_tiler2.default, { images: this.state.images, minWidth: '200' });
+	        }
+	    }]);
+
+	    return PlaceKittenApp;
+	}(_react2.default.Component);
+
+	_reactDom2.default.render(_react2.default.createElement(PlaceKittenApp, null), document.getElementById('kittens-app'));
 
 /***/ },
 /* 1 */
@@ -19721,24 +19791,7 @@
 	module.exports = __webpack_require__(3);
 
 /***/ },
-/* 159 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _tiler = __webpack_require__(160);
-
-	var _tiler2 = _interopRequireDefault(_tiler);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	exports.default = _tiler2.default;
-
-/***/ },
+/* 159 */,
 /* 160 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -19750,245 +19803,151 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _react = __webpack_require__(1);
+	var _fetchJsonp = __webpack_require__(161);
 
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactDom = __webpack_require__(158);
-
-	var _reactDom2 = _interopRequireDefault(_reactDom);
-
-	var _reactDimensions = __webpack_require__(161);
-
-	var _reactDimensions2 = _interopRequireDefault(_reactDimensions);
+	var _fetchJsonp2 = _interopRequireDefault(_fetchJsonp);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	var InstagramFeed = function () {
+	    function InstagramFeed(userId, clientId) {
+	        _classCallCheck(this, InstagramFeed);
 
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var Tiler = function (_React$Component) {
-	    _inherits(Tiler, _React$Component);
-
-	    function Tiler() {
-	        _classCallCheck(this, Tiler);
-
-	        return _possibleConstructorReturn(this, Object.getPrototypeOf(Tiler).apply(this, arguments));
+	        self.userId = userId;
+	        self.clientId = clientId;
 	    }
 
-	    _createClass(Tiler, [{
-	        key: 'render',
-	        value: function render() {
-	            var items = [1, 2, 3, 4, 5].map(function (n, i) {
-	                return _react2.default.createElement(
-	                    'div',
-	                    { key: i },
-	                    'Hiee'
-	                );
-	            });
+	    _createClass(InstagramFeed, [{
+	        key: 'recent',
+	        value: function recent(size) {
+	            var url = 'https://api.instagram.com/v1/users/' + self.userId + '/media/recent/?client_id=' + self.clientId;
 
-	            return _react2.default.createElement(
-	                'div',
-	                { className: 'image-container' },
-	                items
-	            );
+	            return (0, _fetchJsonp2.default)(url, { method: 'GET' }).then(function (response) {
+	                return response.json();
+	            }).then(function (json) {
+	                return json;
+	            });
 	        }
 	    }]);
 
-	    return Tiler;
-	}(_react2.default.Component);
+	    return InstagramFeed;
+	}();
 
-	exports.default = Tiler;
+	exports.default = InstagramFeed;
 
 /***/ },
 /* 161 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
 
-	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
-
-	exports.__esModule = true;
-
-	var _extends = Object.assign || function (target) {
-	  for (var i = 1; i < arguments.length; i++) {
-	    var source = arguments[i];for (var key in source) {
-	      if (Object.prototype.hasOwnProperty.call(source, key)) {
-	        target[key] = source[key];
-	      }
-	    }
-	  }return target;
-	};
-
-	exports['default'] = Dimensions;
-
-	function _interopRequireDefault(obj) {
-	  return obj && obj.__esModule ? obj : { 'default': obj };
-	}
-
-	function _classCallCheck(instance, Constructor) {
-	  if (!(instance instanceof Constructor)) {
-	    throw new TypeError('Cannot call a class as a function');
+	(function (global, factory) {
+	  if (true) {
+	    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [exports, module], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	  } else if (typeof exports !== 'undefined' && typeof module !== 'undefined') {
+	    factory(exports, module);
+	  } else {
+	    var mod = {
+	      exports: {}
+	    };
+	    factory(mod.exports, mod);
+	    global.fetchJsonp = mod.exports;
 	  }
-	}
+	})(undefined, function (exports, module) {
+	  'use strict';
 
-	function _inherits(subClass, superClass) {
-	  if (typeof superClass !== 'function' && superClass !== null) {
-	    throw new TypeError('Super expression must either be null or a function, not ' + (typeof superClass === 'undefined' ? 'undefined' : _typeof(superClass)));
-	  }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
-	}
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var style = {
-	  width: '100%',
-	  height: '100%',
-	  padding: 0,
-	  border: 0
-	};
-
-	function defaultGetWidth(element) {
-	  return element.clientWidth;
-	}
-
-	function defaultGetHeight(element) {
-	  return element.clientHeight;
-	}
-
-	/**
-	 * Wraps a react component and adds properties `containerHeight` and
-	 * `containerWidth`. Useful for responsive design. Properties update on
-	 * window resize. **Note** that the parent element must have either a
-	 * height or a width, or nothing will be rendered
-	 *
-	 * Can be used as a
-	 * [higher-order component](http://babeljs.io/blog/2015/06/07/react-on-es6-plus/#property-initializers)
-	 * or as an [ES7 class decorator](https://github.com/wycats/javascript-decorators)
-	 * (see examples)
-	 *
-	 * v1.0.0 is for React v0.14 only. Use ^0.1.0 for React v0.13
-	 *
-	 * @param {object} [options] Options
-	 * @param {function} [options.getHeight] `getHeight(element)` should return element
-	 * height, where element is the wrapper div. Defaults to `element.clientHeight`
-	 * @param {function} [options.getWidth]  `getWidth(element)` should return element
-	 * width, where element is the wrapper div. Defaults to `element.clientWidth`
-	 * @return {function}                   Returns a higher-order component that can be
-	 * used to enhance a react component `Dimensions()(MyComponent)`
-	 *
-	 * ### Live Example
-	 *
-	 * Will open a browser window for localhost:9966
-	 *
-	 * `npm i && npm i react react-dom && npm start`
-	 *
-	 * @example
-	 * // ES2015
-	 * import React from 'react'
-	 * import Dimensions from 'react-dimensions'
-	 *
-	 * class MyComponent extends React.Component {
-	 *   render() (
-	 *     <div
-	 *       containerWidth={this.props.containerWidth}
-	 *       containerHeight={this.props.containerHeight}
-	 *     >
-	 *     </div>
-	 *   )
-	 * }
-	 *
-	 * export default Dimensions()(MyComponent) // Enhanced component
-	 *
-	 * @example
-	 * // ES5
-	 * var React = require('react')
-	 * var Dimensions = require('react-dimensions')
-	 *
-	 * var MyComponent = React.createClass({
-	 *   render: function() {(
-	 *     <div
-	 *       containerWidth={this.props.containerWidth}
-	 *       containerHeight={this.props.containerHeight}
-	 *     >
-	 *     </div>
-	 *   )}
-	 * }
-	 *
-	 * module.exports = Dimensions()(MyComponent) // Enhanced component
-	 *
-	 */
-
-	function Dimensions() {
-	  var _ref = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
-
-	  var _ref$getHeight = _ref.getHeight;
-	  var getHeight = _ref$getHeight === undefined ? defaultGetHeight : _ref$getHeight;
-	  var _ref$getWidth = _ref.getWidth;
-	  var getWidth = _ref$getWidth === undefined ? defaultGetWidth : _ref$getWidth;
-
-	  return function (ComposedComponent) {
-	    return function (_React$Component) {
-	      _inherits(DimensionsHOC, _React$Component);
-
-	      function DimensionsHOC() {
-	        var _this = this;
-
-	        _classCallCheck(this, DimensionsHOC);
-
-	        _React$Component.apply(this, arguments);
-
-	        this.state = {};
-
-	        this.updateDimensions = function () {
-	          var container = _this.refs.container;
-	          if (!container) {
-	            throw new Error('Cannot find container div');
-	          }
-	          _this.setState({
-	            containerWidth: getWidth(container),
-	            containerHeight: getHeight(container)
-	          });
-	        };
-
-	        this.onResize = function () {
-	          if (_this.rqf) return;
-	          _this.rqf = window.requestAnimationFrame(function () {
-	            _this.rqf = null;
-	            _this.updateDimensions();
-	          });
-	        };
-	      }
-
-	      DimensionsHOC.prototype.componentDidMount = function componentDidMount() {
-	        this.updateDimensions();
-	        window.addEventListener('resize', this.onResize, false);
-	      };
-
-	      DimensionsHOC.prototype.componentWillUnmount = function componentWillUnmount() {
-	        window.removeEventListener('resize', this.onResize);
-	      };
-
-	      DimensionsHOC.prototype.render = function render() {
-	        return _react2['default'].createElement('div', { style: style, ref: 'container' }, (this.state.containerWidth || this.state.containerHeight) && _react2['default'].createElement(ComposedComponent, _extends({}, this.state, this.props)));
-	      };
-
-	      return DimensionsHOC;
-	    }(_react2['default'].Component);
+	  var defaultOptions = {
+	    timeout: 5000,
+	    jsonpCallback: 'callback',
+	    jsonpCallbackFunction: null
 	  };
-	}
 
-	module.exports = exports['default'];
+	  function generateCallbackFunction() {
+	    return 'jsonp_' + Date.now() + '_' + Math.ceil(Math.random() * 100000);
+	  }
 
-	// ES7 Class properties
-	// http://babeljs.io/blog/2015/06/07/react-on-es6-plus/#property-initializers
+	  // Known issue: Will throw 'Uncaught ReferenceError: callback_*** is not defined' error if request timeout
+	  function clearFunction(functionName) {
+	    // IE8 throws an exception when you try to delete a property on window
+	    // http://stackoverflow.com/a/1824228/751089
+	    try {
+	      delete window[functionName];
+	    } catch (e) {
+	      window[functionName] = undefined;
+	    }
+	  }
 
-	// Using arrow functions and ES7 Class properties to autobind
-	// http://babeljs.io/blog/2015/06/07/react-on-es6-plus/#arrow-functions
+	  function removeScript(scriptId) {
+	    var script = document.getElementById(scriptId);
+	    document.getElementsByTagName('head')[0].removeChild(script);
+	  }
+
+	  var fetchJsonp = function fetchJsonp(url) {
+	    var options = arguments[1] === undefined ? {} : arguments[1];
+
+	    var timeout = options.timeout != null ? options.timeout : defaultOptions.timeout;
+	    var jsonpCallback = options.jsonpCallback != null ? options.jsonpCallback : defaultOptions.jsonpCallback;
+
+	    var timeoutId = undefined;
+
+	    return new Promise(function (resolve, reject) {
+	      var callbackFunction = options.jsonpCallbackFunction || generateCallbackFunction();
+
+	      window[callbackFunction] = function (response) {
+	        resolve({
+	          ok: true,
+	          // keep consistent with fetch API
+	          json: function json() {
+	            return Promise.resolve(response);
+	          }
+	        });
+
+	        if (timeoutId) clearTimeout(timeoutId);
+
+	        removeScript(jsonpCallback + '_' + callbackFunction);
+
+	        clearFunction(callbackFunction);
+	      };
+
+	      // Check if the user set their own params, and if not add a ? to start a list of params
+	      url += url.indexOf('?') === -1 ? '?' : '&';
+
+	      var jsonpScript = document.createElement('script');
+	      jsonpScript.setAttribute('src', url + jsonpCallback + '=' + callbackFunction);
+	      jsonpScript.id = jsonpCallback + '_' + callbackFunction;
+	      document.getElementsByTagName('head')[0].appendChild(jsonpScript);
+
+	      timeoutId = setTimeout(function () {
+	        reject(new Error('JSONP request to ' + url + ' timed out'));
+
+	        clearFunction(callbackFunction);
+	        removeScript(jsonpCallback + '_' + callbackFunction);
+	      }, timeout);
+	    });
+	  };
+
+	  // export as global function
+	  /*
+	  let local;
+	  if (typeof global !== 'undefined') {
+	    local = global;
+	  } else if (typeof self !== 'undefined') {
+	    local = self;
+	  } else {
+	    try {
+	      local = Function('return this')();
+	    } catch (e) {
+	      throw new Error('polyfill failed because global object is unavailable in this environment');
+	    }
+	  }
+	  
+	  local.fetchJsonp = fetchJsonp;
+	  */
+
+	  module.exports = fetchJsonp;
+	});
 
 /***/ }
 /******/ ]);
