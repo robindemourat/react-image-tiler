@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Tiler from '../src/tiler.js'
+import Tiler from '../src/Tiler'
 import InstagramFeed from './instagram.js'
 
 class InstagramApp extends React.Component {
@@ -29,14 +29,16 @@ class PlaceKittenApp extends React.Component {
 
         this.state = {
             images: [
-                'http://placekitten.com/200/300',
-                'http://placekitten.com/300/300',
-                'http://placekitten.com/400/300',
-                'http://placekitten.com/500/300',
-                'http://placekitten.com/200/200',
-                'http://placekitten.com/500/500',
-                'http://placekitten.com/600/400',
-                'http://placekitten.com/700/300',
+              'https://placehold.it/200x200',
+              'https://placehold.it/300x300',
+              'https://placehold.it/400x400',
+              'https://placehold.it/500x500',
+              'https://placehold.it/600x600',
+              'https://placehold.it/600x600',
+              'https://placehold.it/600x600',
+              'https://placehold.it/600x600',
+              'https://placehold.it/600x600',
+              'https://placehold.it/600x600',
             ]
         }
     }

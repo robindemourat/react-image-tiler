@@ -43,7 +43,7 @@ The example also includes a very simple `InstagramFeed` class that makes it easy
 ## Development
 
 ```bash
-$ webpack-dev-server --content-base example/
+$ npm run example
 ```
 
 [react]: https://facebook.github.io/react/

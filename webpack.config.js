@@ -11,7 +11,7 @@ const config = {
     },
 
     resolve: {
-        extensions: ['', '.js', '.jsx']
+        extensions: ['.js', '.jsx']
     },
 
     output: {
@@ -23,14 +23,11 @@ const config = {
         loaders: [
             {
                 test: /\.jsx?$/,
-                loader: ['babel'],
-                query: {
-                    presets: ['react', 'es2015']
-                }
+                loader: ['babel-loader'],
             },
             {
                 test: /\.css$/,
-                loader: 'style!css'
+                loader: 'style-loader!css-loader?modules'
             }
         ]
     }

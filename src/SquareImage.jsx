@@ -1,5 +1,4 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
 
 export default class SquareImage extends React.Component {
     constructor(props) {
@@ -8,7 +7,11 @@ export default class SquareImage extends React.Component {
         this.state = {
             height: 0,
             width: 0,
-            backgroundImage: `url(${props.backgroundImage})`
+            backgroundImage: `url(${props.backgroundImage})`,
+            backgroundRepeat: 'no-repeat',
+            backgroundSize: 'cover',
+            float: 'left',
+            display: 'inline-block'
         }
     }
 

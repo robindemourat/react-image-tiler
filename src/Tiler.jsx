@@ -1,8 +1,5 @@
-require('./tiler.css')
-
 import React from 'react'
-import ReactDOM from 'react-dom'
-import SquareImage from './image.jsx'
+import SquareImage from './SquareImage.jsx'
 
 class Tiler extends React.Component {
     constructor(props) {
@@ -14,11 +11,22 @@ class Tiler extends React.Component {
     }
 
     render() {
+        const containerStyle = {
+          margin: 0,
+          padding: 0
+        }
+
+        const endTile = {
+          clear: 'both',
+          float: 'none',
+          display: 'block'
+        }
+
         const items = this.props.images.map((n, i) => {
             return <SquareImage backgroundImage={n} minWidth={this.props.minWidth} key={i} />
         })
 
-        return <div className="tiler-image-container">{ items }<div className="end"></div></div>
+        return <div style={containerStyle}>{items}<div style={endTile}></div></div>
     }
 }
 
