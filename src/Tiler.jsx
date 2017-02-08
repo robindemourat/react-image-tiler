@@ -1,35 +1,47 @@
 import React from 'react'
-import SquareImage from './SquareImage.jsx'
+import SquareImage from './SquareImage'
 
 class Tiler extends React.Component {
-    constructor(props) {
-        super(props)
+  static get propTypes() {
+    return {
+      images: React.PropTypes.arrayOf(React.PropTypes.string),
+      minWidth: React.PropTypes.number,
+    }
+  }
 
-        this.state = {
-            images: props.images
-        }
+  static get defaultProps() {
+    return {
+      images: [],
+      minWidth: 200,
+    }
+  }
+
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      images: props.images,
+    }
+  }
+
+  render() {
+    const containerStyle = {
+      margin: 0,
+      padding: 0,
     }
 
-    render() {
-        const containerStyle = {
-          margin: 0,
-          padding: 0
-        }
-
-        const endTile = {
-          clear: 'both',
-          float: 'none',
-          display: 'block'
-        }
-
-        const items = this.props.images.map((n, i) => {
-            return <SquareImage backgroundImage={n} minWidth={this.props.minWidth} key={i} />
-        })
-
-        return <div style={containerStyle}>{items}<div style={endTile}></div></div>
+    const endTile = {
+      clear: 'both',
+      float: 'none',
+      display: 'block',
     }
+
+    const items = this.props.images.map((n, i) =>
+        <SquareImage backgroundImage={n} minWidth={this.props.minWidth} key={i} /> // eslint-disable-line react/no-array-index-key
+    )
+
+    return <div style={containerStyle}>{items}<div style={endTile} /></div>
+  }
 }
-
-Tiler.defaultProps = { images: [], minWidth: 200 }
 
 export default Tiler
