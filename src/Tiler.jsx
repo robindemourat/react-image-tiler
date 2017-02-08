@@ -1,7 +1,7 @@
 import React from 'react'
 import SquareImage from './SquareImage'
 
-class Tiler extends React.Component {
+export default class Tiler extends React.Component {
   static get propTypes() {
     return {
       images: React.PropTypes.arrayOf(React.PropTypes.string),
@@ -42,6 +42,5 @@ class Tiler extends React.Component {
 
     return <div style={containerStyle}>{items}<div style={endTile} /></div>
   }
-}
 
-export default Tiler
+}
