@@ -1,13 +1,13 @@
 const path = require('path')
 
 const paths = {
-  app: path.join(__dirname, 'src'),
-  build: path.join(__dirname, 'lib'),
+  app: path.join(__dirname, 'example'),
+  build: path.join(__dirname, 'example'),
 }
 
 const config = {
   entry: {
-    app: `${paths.app}/Tiler.jsx`,
+    app: `${paths.app}/index.jsx`,
   },
 
   resolve: {
@@ -16,7 +16,7 @@ const config = {
 
   output: {
     path: paths.build,
-    filename: 'index.js',
+    filename: 'bundle.js',
   },
 
   module: {
