@@ -31,7 +31,7 @@ images = [
     'http://placekitten.com/300/300',
 ]
 
-ReactDOM.render(<Tiler images={images} minWidth="200" />)
+ReactDOM.render(<Tiler images={images} minWidth="200" />, document.getElementById('foo'))
 ```
 
 ## Example

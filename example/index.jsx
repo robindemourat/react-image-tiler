@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Tiler from '../src/Tiler'
+import Tiler from '../lib/Tiler'
 import InstagramFeed from './instagram.js'
 
 class InstagramApp extends React.Component {
