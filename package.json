@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "eslint src/* && webpack",
+    "build": "eslint src/* && ./node_modules/.bin/babel ./src/*.jsx --out-dir ./build --source-maps --presets es2016,es2015,react",
     "example": "webpack-dev-server --config webpack.config.example.js --content-base example/"
   },
   "keywords": [
@@ -36,6 +36,8 @@
     "webpack-dev-server": "^2.3.0"
   },
   "dependencies": {
+    "babel-cli": "^6.23.0",
+    "babel-plugin-add-module-exports": "^0.2.1",
     "react": "^15.4.2",
     "react-dom": "^15.4.2"
   }

@@ -1,13 +1,13 @@
 const path = require('path')
 
 const paths = {
-  app: path.join(__dirname, 'src'),
+  app: path.join(__dirname, 'build', 'src'),
   build: path.join(__dirname, 'lib'),
 }
 
 const config = {
   entry: {
-    app: `${paths.app}/Tiler.jsx`,
+    app: `${paths.app}/Tiler.js`,
   },
 
   resolve: {
