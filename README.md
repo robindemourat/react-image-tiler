@@ -16,6 +16,8 @@ The `Tiler` component has the following properties:
 
 - `images` - an array of image URLs to display
 - `minWidth` - the minimum width of an image
+- `maxWidth` - the maximum width of an image
+- `parentWidth` - a function returning the pixel width of a parent. By default, it's `window.innerWidth`
 
 ## Use
 

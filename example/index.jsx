@@ -44,7 +44,7 @@ class PlaceKittenApp extends React.Component {
     }
 
     render() {
-        return <Tiler images={ this.state.images } minWidth="200"/>
+        return <Tiler images={ this.state.images } minWidth="300" />
     }
 }
 

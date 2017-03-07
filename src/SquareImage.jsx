@@ -5,12 +5,16 @@ export default class SquareImage extends React.Component {
     return {
       backgroundImage: React.PropTypes.string.isRequired,
       minWidth: React.PropTypes.number,
+      maxWidth: React.PropTypes.number,
+      parentWidth: React.PropTypes.func,
     }
   }
 
   static get defaultProps() {
     return {
-      minWidth: 200,
+      minWidth: 100,
+      maxWidth: 500,
+      parentWidth: () => window.innerWidth,
     }
   }
 
@@ -42,10 +46,21 @@ export default class SquareImage extends React.Component {
   }
 
   resize() {
-    return () => this.modifyState({
-      height: window.innerWidth / Math.floor(window.innerWidth / this.props.minWidth),
-      width: window.innerWidth / Math.floor(window.innerWidth / this.props.minWidth),
-    })
+    const cap = (min, a, max) => Math.min(Math.max(min, a), max)
+    const width = () => (
+      cap(
+        this.props.minWidth,
+        this.props.parentWidth() / Math.floor(this.props.parentWidth() / this.props.minWidth),
+        this.props.maxWidth
+      )
+    )
+
+    return () => {
+      this.modifyState({
+        height: width(),
+        width: width(),
+      })
+    }
   }
 
   render() {

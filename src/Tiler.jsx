@@ -6,13 +6,15 @@ export default class Tiler extends React.Component {
     return {
       images: React.PropTypes.arrayOf(React.PropTypes.string),
       minWidth: React.PropTypes.number,
+      maxWidth: React.PropTypes.number,
     }
   }
 
   static get defaultProps() {
     return {
       images: [],
-      minWidth: 200,
+      minWidth: 500,
+      maxWidth: Infinity,
     }
   }
 
@@ -36,11 +38,25 @@ export default class Tiler extends React.Component {
       display: 'block',
     }
 
-    const items = this.props.images.map((n, i) =>
-        <SquareImage backgroundImage={n} minWidth={this.props.minWidth} key={i} /> // eslint-disable-line react/no-array-index-key
+    const ref = (r) => {
+      this.node = r
+    }
+
+    const parentWidth = () => (
+      this.node ? this.node.clientWidth : window.innerWidth
     )
 
-    return <div style={containerStyle}>{items}<div style={endTile} /></div>
+    const items = this.props.images.map((n, i) =>
+        <SquareImage
+            backgroundImage={n}
+            parentWidth={parentWidth}
+            maxWidth={this.props.maxWidth}
+            minWidth={this.props.minWidth}
+            key={i} // eslint-disable-line react/no-array-index-key
+        />
+    )
+
+    return <div ref={ref} style={containerStyle}>{items}<div style={endTile} /></div>
   }
 
 }
