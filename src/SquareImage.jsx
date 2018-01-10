@@ -38,7 +38,7 @@ export default class SquareImage extends React.Component {
   }
 
   componentWillUnmount() {
-    window.removeEventLisener('resize', this.resize())
+    window.removeEventListener('resize', this.resize())
   }
 
   modifyState(newState) {
